@@ -1,1 +1,3 @@
-export { FeedbackPage } from './ui/FeedbackPage'
+import { FeedbackPage } from './ui/FeedbackPage'
+
+export default FeedbackPage
