@@ -1,11 +1,20 @@
 export const ROUTES = {
-  HOME: {
+  PROTECTED: {
+    PATH: '/app',
+    FEEDBACK: {
+      PATH: '/app/feedback',
+    },
+  },
+  PUBLIC: {
     PATH: '/',
-  },
-  SIGNIN: {
-    PATH: '/signin',
-  },
-  SIGNOUT: {
-    PATH: '/signout',
+    HOME: {
+      PATH: '/',
+    },
+    SIGNIN: {
+      PATH: '/signin',
+    },
+    SIGNOUT: {
+      PATH: '/signout',
+    },
   },
 }
