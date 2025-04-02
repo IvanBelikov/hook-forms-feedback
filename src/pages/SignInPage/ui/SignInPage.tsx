@@ -10,7 +10,7 @@ export const SignInPage = () => {
   const user = useUserContext()
   const navigate = useNavigate()
 
-  const handleCick = () => navigate(ROUTES.PUBLIC.SIGNUP.PATH)
+  const handleClick = () => navigate(ROUTES.PUBLIC.SIGNUP.PATH)
 
   if (user) {
     return <Navigate to={ROUTES.PROTECTED.APP.PATH} />
@@ -23,7 +23,7 @@ export const SignInPage = () => {
         <Box sx={styles.signInFormStyles}>
           <SignInForm />
         </Box>
-        <Link component={'button'} variant={'body2'} onClick={handleCick}>
+        <Link component={'button'} variant={'body2'} onClick={handleClick}>
           New to the system? Register an account
         </Link>
       </Box>

@@ -15,7 +15,7 @@ export const SignUpPage = () => {
     return <Navigate to={ROUTES.PROTECTED.APP.PATH} />
   }
 
-  const handleCick = () => navigate(ROUTES.PUBLIC.SIGNIN.PATH)
+  const handleClick = () => navigate(ROUTES.PUBLIC.SIGNIN.PATH)
 
   return (
     <Box component={'section'}>
@@ -24,7 +24,7 @@ export const SignUpPage = () => {
         <Box sx={styles.signUpFormStyles}>
           <SignUpForm />
         </Box>
-        <Link component={'button'} variant={'body2'} onClick={handleCick}>
+        <Link component={'button'} variant={'body2'} onClick={handleClick}>
           Already have an account? Sign In
         </Link>
       </Box>
