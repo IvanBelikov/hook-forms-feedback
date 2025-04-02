@@ -1,23 +1,27 @@
-import { lazy } from 'react'
-import { ROUTES } from '@base/shared/constants'
-import { MainLayout } from '@base/app/layouts/MainLayout'
+import { lazy, Suspense } from 'react'
 
 import { RouteObject } from 'react-router'
+import { ROUTES } from '@base/shared/constants'
 
-const FeedbackPage = lazy(() => import('@base/pages/FeedbackPage'))
+import MainLayout from '@base/app/layouts/MainLayout'
 const SignInPage = lazy(() => import('@base/pages/SignInPage'))
+const SignUpPage = lazy(() => import('@base/pages/SignUpPage'))
 
 export const publicPath: RouteObject = {
   path: ROUTES.PUBLIC.PATH,
-  Component: MainLayout,
+  element: (
+    <Suspense fallback={<p>Loading...</p>}>
+      <MainLayout />
+    </Suspense>
+  ),
   children: [
-    {
-      path: ROUTES.PUBLIC.HOME.PATH,
-      Component: FeedbackPage,
-    },
     {
       path: ROUTES.PUBLIC.SIGNIN.PATH,
       Component: SignInPage,
+    },
+    {
+      path: ROUTES.PUBLIC.SIGNUP.PATH,
+      Component: SignUpPage,
     },
   ],
 }

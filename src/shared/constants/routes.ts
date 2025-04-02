@@ -1,6 +1,9 @@
 export const ROUTES = {
   PROTECTED: {
     PATH: '/app',
+    APP: {
+      PATH: '/app/',
+    },
     FEEDBACK: {
       PATH: '/app/feedback',
     },
@@ -13,8 +16,8 @@ export const ROUTES = {
     SIGNIN: {
       PATH: '/signin',
     },
-    SIGNOUT: {
-      PATH: '/signout',
+    SIGNUP: {
+      PATH: '/signup',
     },
   },
 }
