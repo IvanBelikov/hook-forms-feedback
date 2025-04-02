@@ -1,1 +1,2 @@
-export { MainLayout } from './ui/MainLayout'
+import { MainLayout } from './ui/MainLayout'
+export default MainLayout
