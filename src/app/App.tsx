@@ -5,14 +5,17 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClient } from '@base/shared/lib/queryClient'
 
 import { ThemeProvider } from '@base/shared/providers/theme'
+import { UserAuthProvider } from '@base/entities/auth'
 import { CssBaseline } from '@mui/material'
 
 export const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <CssBaseline />
-        <RouterProvider router={router}></RouterProvider>
+        <UserAuthProvider>
+          <CssBaseline />
+          <RouterProvider router={router}></RouterProvider>
+        </UserAuthProvider>
       </ThemeProvider>
     </QueryClientProvider>
   )

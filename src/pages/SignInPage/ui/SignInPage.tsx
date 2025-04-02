@@ -1,20 +1,25 @@
 import { Box, Link } from '@mui/material'
 import styles from './SignInPage.styles'
 
-import { SignInForm } from '@base/entities/auth'
+import { SignInForm, useUserContext } from '@base/entities/auth'
 
-import { useNavigate } from 'react-router'
+import { Navigate, useNavigate } from 'react-router'
 import { ROUTES } from '@base/shared/constants'
 
 export const SignInPage = () => {
+  const user = useUserContext()
   const navigate = useNavigate()
 
   const handleCick = () => navigate(ROUTES.PUBLIC.SIGNUP.PATH)
 
+  if (user) {
+    return <Navigate to={ROUTES.PROTECTED.APP.PATH} />
+  }
+
   return (
     <Box component={'section'}>
       <Box sx={styles.signInFormContainerStyles}>
-        <h1>Enter the system</h1>
+        <h2>Enter the system</h2>
         <Box sx={styles.signInFormStyles}>
           <SignInForm />
         </Box>

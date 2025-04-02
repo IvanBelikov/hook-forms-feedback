@@ -1,31 +1,19 @@
-import { useState } from 'react'
-import { Navigate, Outlet } from 'react-router'
-
-import { onAuthStateChanged, User } from 'firebase/auth'
-
-import { Typography } from '@mui/material'
+import { useNavigate, Outlet } from 'react-router'
 
 import { ROUTES } from '@base/shared/constants'
-import { auth } from '@base/shared/lib/firebase'
-
-import { UserContext } from '../contexts'
+import { useUserContext } from '../contexts'
+import { useEffect } from 'react'
 
 export const AuthMiddleware = () => {
-  const [user, setUser] = useState<User | null>()
+  const user = useUserContext()
 
-  onAuthStateChanged(auth, (user) => setUser(user))
+  const navigate = useNavigate()
 
-  if (user === null) {
-    return <Navigate to={ROUTES.PUBLIC.SIGNIN.PATH} />
-  }
+  useEffect(() => {
+    if (!user) {
+      navigate(ROUTES.PUBLIC.SIGNIN.PATH)
+    }
+  })
 
-  if (user === undefined) {
-    return <Typography component={'p'}>Auth...</Typography>
-  }
-
-  return (
-    <UserContext.Provider value={user}>
-      <Outlet />
-    </UserContext.Provider>
-  )
+  return <Outlet />
 }

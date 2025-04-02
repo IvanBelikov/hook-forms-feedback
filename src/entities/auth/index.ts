@@ -1,4 +1,5 @@
 export { AuthMiddleware } from './middleware'
+export { UserAuthProvider } from './providers'
 
 export { SignInForm } from './ui/SignInForm'
 export { SignUpForm } from './ui/SignUpForm'

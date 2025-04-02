@@ -7,8 +7,6 @@ export const UserContext = createContext<User | null>(null)
 export const useUserContext = () => {
   const userContext = useContext(UserContext)
 
-  console.log(userContext)
-
   if (userContext === undefined) {
     throw new Error('useUserContext must be used within a UserProvider')
   }

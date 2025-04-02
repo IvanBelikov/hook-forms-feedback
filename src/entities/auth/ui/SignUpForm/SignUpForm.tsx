@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router'
+
 import {
   Box,
   Button,
@@ -10,8 +12,10 @@ import styles from './SignUpForm.styles'
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { SignUpSchema, SignUpType } from './SignUpForm.schema'
 
+import { ROUTES } from '@base/shared/constants'
+
+import { SignUpSchema, SignUpType } from './SignUpForm.schema'
 import { useSignUp } from '../../model'
 
 export const SignUpForm = () => {
@@ -23,9 +27,14 @@ export const SignUpForm = () => {
     resolver: zodResolver(SignUpSchema),
   })
 
-  const { mutate, error: fetchError, isPending } = useSignUp()
+  const { mutate, error: fetchError, isPending, isSuccess } = useSignUp()
+  const navigate = useNavigate()
 
   const onSubmit = (data: SignUpType) => mutate(data)
+
+  if (isSuccess) {
+    navigate(ROUTES.PROTECTED.APP.PATH)
+  }
 
   return (
     <Box component={'form'} onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -62,6 +71,7 @@ export const SignUpForm = () => {
       <Button
         type={'submit'}
         variant={'contained'}
+        sx={styles.onSubmitStyles}
         startIcon={isPending ? <CircularProgress size={20} /> : null}
         fullWidth
       >
