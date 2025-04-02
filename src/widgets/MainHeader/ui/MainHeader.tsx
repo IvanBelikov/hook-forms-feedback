@@ -15,14 +15,18 @@ import AdbIcon from '@mui/icons-material/Adb'
 
 import { ThemeSwitcher } from '@base/shared/ui/ThemeSwitcher'
 
+import { useSignOut } from '@base/entities/auth'
+
 const pages = ['Products', 'Pricing', 'Blog']
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
+const settings = ['Profile', 'Account', 'Dashboard']
 
 export const MainHeader = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   )
+
+  const { mutate: signOut } = useSignOut()
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget)
@@ -38,6 +42,8 @@ export const MainHeader = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
   }
+
+  const handleSignOut = () => signOut()
 
   return (
     <AppBar position={'static'}>
@@ -156,6 +162,9 @@ export const MainHeader = () => {
                   </Typography>
                 </MenuItem>
               ))}
+              <MenuItem onClick={handleSignOut}>
+                <Typography sx={{ textAlign: 'center' }}>Sign out</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
