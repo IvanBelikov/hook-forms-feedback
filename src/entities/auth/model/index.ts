@@ -1,1 +1,1 @@
-export { useAuth } from './hooks'
+export { useSignIn, useSignUp, useSignOut } from './hooks'

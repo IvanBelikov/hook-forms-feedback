@@ -1,18 +1,27 @@
-import { useQuery } from '@tanstack/react-query'
-
-import { onAuthStateChanged, User } from 'firebase/auth'
+import { useMutation } from '@tanstack/react-query'
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} from 'firebase/auth'
 
 import { auth } from '@base/shared/lib/firebase'
 
-export const useAuth = () =>
-  useQuery<User | null>({
-    queryKey: ['auth'],
-    queryFn: () =>
-      new Promise((resolve) => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => resolve(user))
+import { CredentialsType } from './types'
 
-        return () => unsubscribe()
-      }),
-    staleTime: Infinity,
-    initialData: null,
+export const useSignIn = () =>
+  useMutation({
+    mutationKey: ['signIn'],
+    mutationFn: ({ email, password }: CredentialsType) =>
+      signInWithEmailAndPassword(auth, email, password),
+  })
+
+export const useSignOut = () =>
+  useMutation({ mutationKey: ['signOut'], mutationFn: () => signOut(auth) })
+
+export const useSignUp = () =>
+  useMutation({
+    mutationKey: ['createUser'],
+    mutationFn: ({ email, password }: CredentialsType) =>
+      createUserWithEmailAndPassword(auth, email, password),
   })
