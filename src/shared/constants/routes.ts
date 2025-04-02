@@ -4,8 +4,8 @@ export const ROUTES = {
     APP: {
       PATH: '/app/',
     },
-    FEEDBACK: {
-      PATH: '/app/feedback',
+    APPLICATION: {
+      PATH: '/app/application',
     },
   },
   PUBLIC: {
