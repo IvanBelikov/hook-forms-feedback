@@ -1,6 +1,8 @@
-import { ROUTES } from '@base/shared/constants'
-import { Button } from '@mui/material'
+import { Button, Box } from '@mui/material'
 import { useNavigate } from 'react-router'
+
+import { ApplicationsList } from '@base/widgets/applications'
+import { ROUTES } from '@base/shared/constants'
 
 export const MainAppPage = () => {
   const navigate = useNavigate()
@@ -8,11 +10,12 @@ export const MainAppPage = () => {
   const handleClick = () => navigate(ROUTES.PROTECTED.APPLICATION.PATH)
 
   return (
-    <div>
-      <h2>Main Page</h2>
+    <Box sx={{ mt: 5 }}>
       <Button variant={'contained'} onClick={handleClick}>
-        Создать заявку
+        Create application
       </Button>
-    </div>
+      <h2>Applications</h2>
+      <ApplicationsList />
+    </Box>
   )
 }
