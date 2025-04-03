@@ -7,6 +7,9 @@ export const ROUTES = {
     APPLICATION: {
       PATH: '/app/application',
     },
+    APPLICATIONCARD: {
+      PATH: '/app/application/:id',
+    },
   },
   PUBLIC: {
     PATH: '/',

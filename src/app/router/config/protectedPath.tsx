@@ -8,14 +8,17 @@ import { AuthMiddleware } from '@base/entities/auth'
 import MainLayout from '@base/app/layouts/MainLayout'
 const ApplicationPage = lazy(() => import('@base/pages/ApplicationPage'))
 const MainAppPage = lazy(() => import('@base/pages/MainAppPage'))
+const ApplicationCardPage = lazy(
+  () => import('@base/pages/ApplicationCardPage')
+)
 
 export const protectedPath: RouteObject = {
   path: ROUTES.PROTECTED.PATH,
-  Component: AuthMiddleware,
+  Component: MainLayout,
   children: [
     {
       path: ROUTES.PROTECTED.PATH,
-      Component: MainLayout,
+      Component: AuthMiddleware,
       children: [
         {
           path: ROUTES.PROTECTED.APP.PATH,
@@ -24,6 +27,10 @@ export const protectedPath: RouteObject = {
         {
           path: ROUTES.PROTECTED.APPLICATION.PATH,
           Component: ApplicationPage,
+        },
+        {
+          path: ROUTES.PROTECTED.APPLICATIONCARD.PATH,
+          Component: ApplicationCardPage,
         },
       ],
     },
