@@ -17,7 +17,10 @@ export const useSignIn = () =>
   })
 
 export const useSignOut = () =>
-  useMutation({ mutationKey: ['signOut'], mutationFn: () => signOut(auth) })
+  useMutation({
+    mutationKey: ['signOut'],
+    mutationFn: () => signOut(auth),
+  })
 
 export const useSignUp = () =>
   useMutation({

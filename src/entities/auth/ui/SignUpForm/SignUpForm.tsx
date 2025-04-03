@@ -44,6 +44,7 @@ export const SignUpForm = () => {
         label={'Email'}
         variant={'outlined'}
         margin={'normal'}
+        disabled={isPending}
         {...register('email')}
         error={!!errors.email}
         helperText={errors.email?.message}
@@ -54,6 +55,7 @@ export const SignUpForm = () => {
         type={'password'}
         variant={'outlined'}
         margin={'normal'}
+        disabled={isPending}
         {...register('password')}
         error={!!errors.password}
         helperText={errors.password?.message}
@@ -64,6 +66,7 @@ export const SignUpForm = () => {
         type={'password'}
         variant={'outlined'}
         margin={'normal'}
+        disabled={isPending}
         {...register('verifyPassword')}
         error={!!errors.verifyPassword}
         helperText={errors.verifyPassword?.message}
@@ -72,6 +75,7 @@ export const SignUpForm = () => {
         type={'submit'}
         variant={'contained'}
         sx={styles.onSubmitStyles}
+        disabled={isPending}
         startIcon={isPending ? <CircularProgress size={20} /> : null}
         fullWidth
       >

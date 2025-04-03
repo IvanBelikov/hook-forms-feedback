@@ -37,6 +37,7 @@ export const SignInForm = () => {
         label={'Email'}
         variant={'outlined'}
         margin={'normal'}
+        disabled={isPending}
         {...register('email')}
         error={!!errors.email}
         helperText={errors.email?.message}
@@ -48,6 +49,7 @@ export const SignInForm = () => {
         type={'password'}
         variant={'outlined'}
         margin={'normal'}
+        disabled={isPending}
         {...register('password')}
         error={!!errors.password}
         helperText={errors.password?.message}
